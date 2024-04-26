@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>Patient Identifying Form</title>
+    <style>
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row2 {
+            display: flex;
+            gap: 55px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Patient Identifying Form</h1> <br>
+
+    <form action="ProcessPatientForm.php" method="post" id="patient-form">
+        <div class="form-row">
+            <div>
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+
+            <div>
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+
+            <div>
+                <label for="middlename">Middle Initial</label>
+                <input type="text" id="middlename" name="middlename" maxlength="1" pattern="[A-Za-z]">
+            </div>
+        </div>
+
+        <div class="form-row2">
+            <fieldset>
+                <legend>Sex</legend>
+                <div>
+                    <input type="radio" id="male" name="sex" value="Male" required>
+                    <label for="male">Male</label>
+                </div> <br>
+                <div>
+                    <input type="radio" id="female" name="sex" value="Female" required>
+                    <label for="female">Female</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Age</legend>
+                <div>
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0" required>
+                </div><br>
+                <div>
+                    <input type="radio" id="years" name="ageunit" value="years">
+                    <label for="years">Years</label>
+                </div><br>
+                <div>
+                    <input type="radio" id="months" name="ageunit" value="months">
+                    <label for="months">Months</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Date of Birth</legend>
+                <div>
+                    <label for="dob_month">Month:</label>
+                    <select id="dob_month" name="dob_month" required>
+                        <option value="">Select Month</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="dob_day">Day:</label>
+                    <input type="number" id="dob_day" name="dob_day" min="1" max="31" required>
+                </div>
+                <div>
+                    <label for="dob_year">Year:</label>
+                    <input type="number" id="dob_year" name="dob_year" min="1900" max="2099" required>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-row2">
+            <fieldset>
+                <legend>Race</legend>
+                <div>
+                    <input type="radio" id="white" name="race" value="white" required>
+                    <label for="white">White</label>
+                </div>
+                <div>
+                    <input type="radio" id="black" name="race" value="black" required>
+                    <label for="black">Black</label>
+                </div>
+                <div>
+                    <input type="radio" id="asian" name="race" value="asian" required>
+                    <label for="asian">Asian/Pacific Islander</label>
+                </div>
+                <div>
+                    <input type="radio" id="unknown" name="race" value="unknown" required>
+                    <label for="unknown">Unknown</label>
+                </div>
+                <div>
+                    <input type="radio" id="other_race" name="race" value="other" required>
+                    <label for="other_race">Other:</label>
+                    <!--input type="text" id="other_race" name="other_race"-->                    
+                </div>
+                <!--div>
+                    <input type="radio" id="other_race" name="race" value="other" required>
+                    <label for="other_race">Other:</label>
+                    <input type="text" id="other_race" name="other_race">                    
+                </div-->
+            </fieldset>
+
+            <fieldset>
+                <legend>Hispanic</legend>
+                <div>
+                    <input type="radio" id="hispanic_yes" name="hispanic" value="yes" required>
+                    <label for="hispanic_yes">Yes</label>
+                </div><br>
+                <div>
+                    <input type="radio" id="hispanic_no" name="hispanic" value="no" required>
+                    <label for="hispanic_no">No</label>
+                </div><br>
+                <div>
+                    <input type="radio" id="hispanic_unknown" name="hispanic" value="unknown" required>
+                    <label for="hispanic_unknown">Unknown</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="form-row2">
+            <fieldset>
+                <legend>Facility (if hospitalized)</legend>
+                <div>
+                    <label for="facility_name">Name:</label>
+                    <input type="text" id="facility_name" name="facility_name">
+                </div>
+                <div>
+                    <label for="facility_city">City:</label>
+                    <input type="text" id="facility_city" name="facility_city">
+                </div>
+                <div>
+                    <label for="facility_county">County:</label>
+                    <input type="text" id="facility_county" name="facility_county">
+                </div>
+                <div>
+                    <label for="facility_state">State:</label>
+                    <input type="text" id="facility_state" name="facility_state" maxlength="2" pattern="[A-Z]{2}">
+                </div>
+                <div>
+                    <label for="facility_phone">Phone Number:</label>
+                    <input type="tel" id="facility_phone" name="facility_phone" pattern="[0-9]{10}">
+                </div>
+                <div>
+                    <label for="medicalrecordnum">Medical Record#:</label>
+                    <input type="text" id="medicalrecordnum" name="medicalrecordnum" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Present Address</legend>
+                <div>
+                    <label for="address_name">Facility Name(if applicable):</label>
+                    <input type="text" id="address_name" name="address_name">
+                </div>
+                <div>
+                    <label for="address_street">Street:</label>
+                    <input type="text" id="address_street" name="address_street">
+                </div>
+                <div>
+                    <label for="address_city">City:</label>
+                    <input type="text" id="address_city" name="address_city">
+                </div>
+                <div>
+                    <label for="address_county">County:</label>
+                    <input type="text" id="address_county" name="address_county">
+                </div>
+                <div>
+                    <label for="address_state">State:</label>
+                    <input type="text" id="address_state" name="address_state">
+                </div>
+            </fieldset>
+        </div>    
+            <button type="submit">Send</button>
+    </form>
+</body>
+</html>
+            
+            

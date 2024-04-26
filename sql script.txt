@@ -1,0 +1,47 @@
+sql script
+
+-- Create the database
+CREATE DATABASE patient_info_db;
+USE patient_info_db;
+
+-- Create the database
+CREATE DATABASE patient_info_db;
+USE patient_info_db;
+
+-- Create the Patient table
+CREATE TABLE Patient (
+    MedicalRecordNum VARCHAR(20) PRIMARY KEY,
+    LastName VARCHAR(50),
+    FirstName VARCHAR(50),
+    MiddleInitial CHAR(1),
+    Sex ENUM('Male', 'Female'),
+    Age INT,
+    AgeUnit ENUM('years','months')
+    Race ENUM('White', 'Black', 'Asian/PacificIslander', 'Unknown', 'Other'),
+    DateOfBirth DATE,
+    Hispanic ENUM('Yes', 'No', 'Unknown')
+);
+
+-- Create the Address table
+CREATE TABLE Address (
+    AddressID INT AUTO_INCREMENT PRIMARY KEY,
+    MedicalRecordNum VARCHAR(20),
+    FacilityName VARCHAR(100),
+    Street VARCHAR(100),
+    City VARCHAR(50),
+    County VARCHAR(50),
+    State CHAR(2),
+    CONSTRAINT fk_patient_address FOREIGN KEY (MedicalRecordNum) REFERENCES Patient(MedicalRecordNum)
+);
+
+-- Create the Facility table
+CREATE TABLE Facility (
+    FacilityID INT AUTO_INCREMENT PRIMARY KEY,
+    MedicalRecordNum VARCHAR(20),
+    FacilityName VARCHAR(100) UNIQUE,
+    City VARCHAR(50),
+    County VARCHAR(50),
+    State CHAR(2),
+    PhoneNumber VARCHAR(20),
+    CONSTRAINT fk_patient_facility FOREIGN KEY (MedicalRecordNum) REFERENCES Patient(MedicalRecordNum)
+);
